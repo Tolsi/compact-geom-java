@@ -1,10 +1,4 @@
 /**
- * 
- */
-
-
-
-/**
  * Exception thrown when an unbounded box  is involved in an operation
  * that assumes a bounded box. 
  * @see GJBox2D

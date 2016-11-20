@@ -1,8 +1,3 @@
-// Matrix.java
-// a simple java file for a standard class
-
-// Imports
-
 /**
  * class GJMatrix
  */

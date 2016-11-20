@@ -1,19 +1,4 @@
 /**
- * File: 	GJCapFactory.java
- * Project: javageom-buffer
- * 
- * Distributed under the LGPL License.
- *
- * Created: 4 janv. 2011
- */
-
-
-
-
-
-
-
-/**
  * Generates a cap at the end of an open curve.
  * @author dlegland
  *

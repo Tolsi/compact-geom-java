@@ -1,14 +1,8 @@
-/**
- * 
- */
-
-
-
-import static java.lang.Math.*;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import static java.lang.Math.*;
 
 /**
  * Several utility functions for working on polygons, including polygon
@@ -39,7 +33,7 @@ public final class GJPolygons2D {
 	 * @since 0.10.3
 	 */
 	public final static GJSimplePolygon2D createRectangle(double x1, double y1,
-														  double x2, double y2) {
+                                                          double x2, double y2) {
 		// extremes coordinates
         double xmin = min(x1, x2);
         double xmax = max(x1, x2);
@@ -61,7 +55,7 @@ public final class GJPolygons2D {
 	 * @since 0.9.1 
 	 */
 	public final static GJSimplePolygon2D createCenteredRectangle(GJPoint2D center,
-																  double length, double width) {
+                                                                  double length, double width) {
 		// extract rectangle parameters
 		double xc = center.x();
 		double yc = center.y();
@@ -90,7 +84,7 @@ public final class GJPolygons2D {
 	 * @since 0.9.1 
 	 */
 	public final static GJSimplePolygon2D createOrientedRectangle(GJPoint2D center,
-																  double length, double width, double theta) {
+                                                                  double length, double width, double theta) {
 		// extract rectangle parameters
 		double xc = center.x();
 		double yc = center.y();
@@ -284,18 +278,6 @@ public final class GJPolygons2D {
     	return (int) Math.signum(
     			(p2.x() - x) * (pt.y() - y) - (pt.x() - x) * (p2.y() - y));
     }
-    
-	/**
-	 * Returns the convex hull of the given set of points. Uses the Jarvis March
-	 * algorithm.
-	 * 
-	 * @param points
-	 *            a collection of points
-	 * @return the convex hull of the set of points
-	 */
-    public final static GJPolygon2D convexHull(Collection<? extends GJPoint2D> points) {
-    	return new GJJarvisMarch2D().convexHull(points);
-    }
 
     /**
      * Computes the buffer at a distance d of the input polygon. The result is
@@ -303,7 +285,7 @@ public final class GJPolygons2D {
      * @see GJPolygon2D#buffer(double)
      */
     public final static GJCirculinearDomain2D createBuffer(GJPolygon2D polygon,
-														   double dist) {
+                                                           double dist) {
     	// get current instance of buffer calculator
         GJBufferCalculator bc = GJBufferCalculator.getDefaultInstance();
         

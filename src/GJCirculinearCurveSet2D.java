@@ -1,18 +1,4 @@
 /**
- * File: 	GJCirculinearCurveSet2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 mai 09
- */
-
-
-
-
-
-
-/**
  * A specialization of GJCurveSet2D that accepts only instances of
  * GJCirculinearCurve2D.
  * @author dlegland
@@ -27,7 +13,7 @@ extends GJCurveSet2D<T>, GJCirculinearCurve2D {
 	public GJCirculinearCurveSet2D<? extends GJCirculinearCurve2D> clip(GJBox2D box);
 
 	public GJCirculinearCurveSet2D<? extends GJCirculinearCurve2D> subCurve(
-			double t0, double t1);
+            double t0, double t1);
 	
 	public GJCirculinearCurveSet2D<? extends GJCirculinearCurve2D> reverse();
 }

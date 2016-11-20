@@ -1,12 +1,4 @@
 /**
- * 
- */
-
-
-
-
-
-/**
  * Exception thrown when trying to compute an inverse transform of a transform
  * that does not allows this feature.
  * @author dlegland

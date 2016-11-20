@@ -1,20 +1,4 @@
 /**
- * File: 	GJCircularShape2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 17 mai 09
- */
-
-
-
-
-
-
-
-
-/**
  * Tagging interface for grouping GJCircle2D and GJCircleArc2D.
  * @author dlegland
  *

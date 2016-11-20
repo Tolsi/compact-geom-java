@@ -1,21 +1,5 @@
-/**
- * 
- */
-
-
-
 import java.util.ArrayList;
 import java.util.Iterator;
-
-
-
-
-
-
-
-
-
-
 
 
 /**
@@ -44,60 +28,6 @@ public abstract class GJBoundaries2D {
                 result.add((GJContinuousOrientedCurve2D) cont);
 
         return result;
-
-        // // createFromCollection array of points
-        // ArrayList<GJPoint2D> points = new ArrayList<GJPoint2D>();
-        //
-        // // add the intersections with edges of the box boundary
-        // for(StraightObject2D edge : box.getEdges())
-        // points.addAll(curve.getIntersections(edge));
-        //		
-        // // convert list to point array, sorted wrt to their position on the
-        // curve
-        // SortedSet<java.lang.Double> set = new TreeSet<java.lang.Double>();
-        // for(GJPoint2D p : points)
-        // set.add(new java.lang.Double(curve.getPosition(p)));
-        //				
-        // // Create curveset for storing the result
-        // GJCurveSet2D<GJContinuousOrientedCurve2D> res =
-        // new GJCurveSet2D<GJContinuousOrientedCurve2D>();
-        //				
-        // // extract first point of the curve
-        // GJPoint2D point1 = curve.getFirstPoint();
-        //		
-        // // case of empty curve set, for example
-        // if(point1==null)
-        // return res;
-        //
-        // // if no intersection point, the curve is totally either inside or
-        // outside the box
-        // if(set.size()==0){
-        // if(box.contains(point1))
-        // res.addCurve(curve);
-        // return res;
-        // }
-        //		
-        // double pos1, pos2;
-        // Iterator<java.lang.Double> iter = set.iterator();
-        //		
-        // double pos0=0;
-        //		
-        // // different behavior depending if first point lies inside the box
-        // if(box.contains(point1) && !box.getBoundary().contains(point1))
-        // pos0 = iter.next().doubleValue();
-        //		
-        //		
-        // // add the portions of curve between couples of intersections
-        // while(iter.hasNext()){
-        // pos1 = iter.next().doubleValue();
-        // if(iter.hasNext())
-        // pos2 = iter.next().doubleValue();
-        // else
-        // pos2 = pos0;
-        // res.addCurve(curve.getSubCurve(pos1, pos2));
-        // }
-        //		
-        // return res;
     }
 
     /**
@@ -158,8 +88,8 @@ public abstract class GJBoundaries2D {
             curves[i] = curve;
 
             if (curve.isClosed()) {
-                startPositions[i] = java.lang.Double.NaN;
-                endPositions[i] = java.lang.Double.NaN;
+                startPositions[i] = Double.NaN;
+                endPositions[i] = Double.NaN;
                 continue;
             }
 
@@ -283,10 +213,10 @@ public abstract class GJBoundaries2D {
 
     public final static int findNextCurveIndex(double[] positions, double pos) {
         int ind = -1;
-        double posMin = java.lang.Double.MAX_VALUE;
+        double posMin = Double.MAX_VALUE;
         for (int i = 0; i<positions.length; i++) {
             // avoid NaN
-            if (java.lang.Double.isNaN(positions[i]))
+            if (Double.isNaN(positions[i]))
                 continue;
             // avoid values before
             if (positions[i]-pos< GJShape2D.ACCURACY)
@@ -305,7 +235,7 @@ public abstract class GJBoundaries2D {
         // if not found, return index of smallest value (mean that pos is last
         // point on the boundary, so we need to start at the beginning).
         for (int i = 0; i<positions.length; i++) {
-            if (java.lang.Double.isNaN(positions[i]))
+            if (Double.isNaN(positions[i]))
                 continue;
             if (positions[i]-posMin< GJShape2D.ACCURACY) {
                 ind = i;

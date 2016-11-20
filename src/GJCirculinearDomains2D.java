@@ -1,18 +1,5 @@
-/**
- * File: 	CirculinearDomain2DUtils.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 16 mai 09
- */
-
-
 import java.util.ArrayList;
 import java.util.Collection;
-
-
-
 
 /**
  * Some utilities for working with circulinear curves.
@@ -22,7 +9,7 @@ import java.util.Collection;
 public class GJCirculinearDomains2D {
 	
 	public final static GJCirculinearDomain2D computeBuffer(
-			GJCirculinearDomain2D domain, double dist) {
+            GJCirculinearDomain2D domain, double dist) {
 		
 		ArrayList<GJCirculinearContour2D> rings =
 			new ArrayList<GJCirculinearContour2D>();

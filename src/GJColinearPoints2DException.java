@@ -1,15 +1,4 @@
 /**
- * File: 	ColinearPointsException.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 nov. 09
- */
-
-
-
-/**
  * Exception thrown when the assumption of non colinearity is not respected.
  * Methods are provided by retrieving the three incriminated points.
  * @author dlegland

@@ -1,15 +1,4 @@
 /**
- * File: 	GJDegeneratedLine2DException.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 19 ao�t 2010
- */
-
-
-
-/**
  * A degenerated line, whose direction vector is undefined, had been
  * encountered.
  * This kind of exception can occur during polygon or polylines algorithms,

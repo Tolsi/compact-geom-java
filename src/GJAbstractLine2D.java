@@ -1,42 +1,5 @@
-/* File AbstractLine2D.java 
- *
- * Project : Java Geometry Library
- *
- * ===========================================
- * 
- * This library is free software; you can redistribute it and/or modify it 
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 2.1 of the License, or (at
- * your option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but 
- * WITHOUT ANY WARRANTY, without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * See the GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library. if not, write to :
- * The Free Software Foundation, Inc., 59 Temple Place, Suite 330,
- * Boston, MA 02111-1307, USA.
- */
-
-// package
-
-
-
-//Imports
 import java.util.ArrayList;
 import java.util.Collection;
-
-
-
-
-
-
-
-
-
 
 
 /**
@@ -69,7 +32,7 @@ implements GJSmoothOrientedCurve2D, GJLinearElement2D {
      * intersection doesn't exist (parallel lines, short edge), return null.
      */
     public static GJPoint2D getIntersection(GJAbstractLine2D line1,
-											GJAbstractLine2D line2) {
+                                            GJAbstractLine2D line2) {
 		// Compute denominator, and tests its validity
 		double denom = line1.dx * line2.dy - line1.dy * line2.dx;
 		if (Math.abs(denom) < GJShape2D.ACCURACY)

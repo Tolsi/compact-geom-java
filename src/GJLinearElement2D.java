@@ -1,15 +1,4 @@
 /**
- * 
- */
-
-
-
-
-
-
-
-
-/**
  * A continuous linear shape, like a straight line, a line segment or a ray.
  * 
  * @author dlegland

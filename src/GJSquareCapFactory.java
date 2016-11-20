@@ -1,21 +1,4 @@
 /**
- * File: 	GJSquareCapFactory.java
- * Project: javageom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 18 Aug. 2011
- */
-
-
-
-
-
-
-
-
-
-/**
  * @author dlegland
  *
  */
@@ -25,7 +8,7 @@ public class GJSquareCapFactory implements GJCapFactory {
 	 * @see math.geom2d.circulinear.buffer.GJCapFactory#createCap(math.geom2d.GJPoint2D, math.geom2d.GJVector2D, double)
 	 */
 	public GJCirculinearContinuousCurve2D createCap(GJPoint2D center,
-													GJVector2D direction, double dist) {
+                                                    GJVector2D direction, double dist) {
 		double theta = direction.angle();
 		return createCap(center, theta, dist);
 	}

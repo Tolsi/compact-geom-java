@@ -1,19 +1,4 @@
-/**
- * File: 	GJPointSet2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 4 f�vr. 09
- */
-
-
 import java.util.Collection;
-
-
-
-
-
 
 
 /**

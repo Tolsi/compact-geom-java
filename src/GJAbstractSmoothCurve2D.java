@@ -1,18 +1,5 @@
-/**
- * File: 	GJAbstractSmoothCurve2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 21 mai 09
- */
-
-
 import java.util.ArrayList;
 import java.util.Collection;
-
-
-
 
 
 /**

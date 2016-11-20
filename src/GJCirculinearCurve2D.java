@@ -1,20 +1,4 @@
-/**
- * File: 	GJCirculinearCurve2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 mai 09
- */
-
-
 import java.util.Collection;
-
-
-
-
-
-
 
 /**
  * <p>

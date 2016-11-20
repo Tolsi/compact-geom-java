@@ -1,23 +1,6 @@
-/**
- * File: 	GJAbstractContinuousCurve2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 21 mai 09
- */
-
-
-import java.awt.Graphics2D;
-import java.awt.Shape;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
-
-
-
-
-
-
 
 
 /**

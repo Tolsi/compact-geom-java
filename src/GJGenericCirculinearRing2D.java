@@ -1,22 +1,5 @@
-/**
- * File: 	GJGenericCirculinearRing2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 mai 09
- */
-
-
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.Collection;
-
-
-
-
-
-
-
 
 /**
  * A basic implementation of a GJCirculinearRing2D, which is assumed to be

@@ -1,15 +1,4 @@
 /**
- * File: 	GJCirculinearRing2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 mai 09
- */
-
-
-
-/**
  * Interface for circulinear contours which are both bounded and closed.
  * @author dlegland
  * @see GJGenericCirculinearRing2D

@@ -1,49 +1,10 @@
-/* file : Circle2D.java
- * 
- * Project : geometry
- *
- * ===========================================
- * 
- * This library is free software; you can redistribute it and/or modify it 
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 2.1 of the License, or (at
- * your option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but 
- * WITHOUT ANY WARRANTY, without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * See the GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library. if not, write to :
- * The Free Software Foundation, Inc., 59 Temple Place, Suite 330,
- * Boston, MA 02111-1307, USA.
- * 
- * Created on 30 avr. 2006
- *
- */
-
-
-
-import static java.lang.Math.*;
-
-import java.awt.Graphics2D;
-import java.awt.Shape;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Locale;
 
-
-
-
-
-
-
-
-
-
+import static java.lang.Math.*;
 
 
 /**
@@ -54,7 +15,7 @@ import java.util.Locale;
  * @author dlegland
  */
 public class GJCircle2D extends GJAbstractSmoothCurve2D
-implements GJEllipseShape2D, GJCircleLine2D, GJCircularShape2D, GJCirculinearRing2D,
+implements GJCircleLine2D, GJCircularShape2D, GJCirculinearRing2D,
 Cloneable {
 
     // ===================================================================
@@ -521,20 +482,12 @@ Cloneable {
     public boolean isCircle() {
         return true;
     }
-
-    /**
-     * Converts this circle to an instance of GJEllipse2D.
-     * @return a new instance of GJEllipse2D that corresponds to this circle
-     */
-    public GJEllipse2D asEllipse() {
-    	return new GJEllipse2D(this.xc, this.yc, this.r, this.r, this.theta, this.direct);
-    }
     
     
     // ===================================================================
     // methods implementing the GJConic2D interface
 
-    public Type conicType() {
+    public GJConic2D.Type conicType() {
         return GJConic2D.Type.CIRCLE;
     }
 
@@ -868,6 +821,11 @@ Cloneable {
         return GJAngle2D.horizontalAngle(xp, yp);
     }
 
+    @Override
+    public GJSmoothContour2D transform(GJAffineTransform2D trans) {
+        throw new IllegalStateException();
+    }
+
     /**
      * Returns the circle with same center and same radius, but with the 
      * opposite orientation.
@@ -1024,28 +982,6 @@ Cloneable {
      */
     public GJBox2D boundingBox() {
         return new GJBox2D(xc - r, xc + r, yc - r, yc + r);
-    }
-    
-    /**
-     * Transforms this circle by an affine transform. If the transformed shape
-     * is a circle (ellipse with equal axis lengths), returns an instance of
-     * GJCircle2D. The resulting ellipse is direct if this ellipse and the
-     * transform are either both direct or both indirect.
-     */
-    public GJEllipseShape2D transform(GJAffineTransform2D trans) {
-    	// When the transform is not a similarity, should switch to EllipseArc
-    	// computation
-        if (!GJAffineTransform2D.isSimilarity(trans)) {
-	    	return this.asEllipse().transform(trans);
-        }
-        
-        // If transform is a similarity, the result is a circle
-        GJPoint2D center = this.center().transform(trans);
-        GJPoint2D p1 = this.firstPoint().transform(trans);
-
-        boolean direct = !this.direct ^ trans.isDirect();
-        GJCircle2D result = new GJCircle2D(center, center.distance(p1), direct);
-        return result;
     }
 
 

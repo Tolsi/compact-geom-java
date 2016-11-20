@@ -1,15 +1,4 @@
 /**
- * File: 	GJNonCirculinearShape2DException.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 1 nov. 09
- */
-
-
-
-/**
  * @author dlegland
  *
  */

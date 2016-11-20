@@ -1,21 +1,5 @@
-/**
- * File: 	GJCirculinearCurveArray2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 mai 09
- */
-
-
 import java.util.ArrayList;
 import java.util.Collection;
-
-
-
-
-
-
 
 /**
  * A specialization of GJCurveArray2D that accepts only instances of

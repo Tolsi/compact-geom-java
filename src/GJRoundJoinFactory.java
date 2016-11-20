@@ -1,13 +1,3 @@
-/**
- * File: 	CircularJoinFactory.java
- * Project: javageom-buffer
- * 
- * Distributed under the LGPL License.
- *
- * Created: 4 janv. 2011
- */
-
-
 import static java.lang.Math.PI;
 
 
@@ -23,8 +13,8 @@ public class GJRoundJoinFactory implements GJJoinFactory {
 	 * The first point of curve2 is assumed to be the last point of curve1.
 	 */
 	public GJCirculinearContinuousCurve2D createJoin(
-			GJCirculinearElement2D curve1,
-			GJCirculinearElement2D curve2, double dist) {
+            GJCirculinearElement2D curve1,
+            GJCirculinearElement2D curve2, double dist) {
 		
 		// center of circle arc
 		GJPoint2D center = curve2.firstPoint();

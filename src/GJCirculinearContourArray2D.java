@@ -1,26 +1,6 @@
-/**
- * File: 	GJCirculinearContourArray2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 mai 09
- */
-
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-
-
-
-
-
-
-
-
-
-
 
 /**
  * A circulinear boundary which is composed of several GJCirculinearContour2D.

@@ -1,15 +1,4 @@
 /**
- * File: 	GJGeometricObject2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 26 sept. 2010
- */
-
-
-
-/**
  * Grouping interface for all objects operating on Euclidean plane. This
  * includes shapes, boxes, transforms, vectors...
  * @author dlegland

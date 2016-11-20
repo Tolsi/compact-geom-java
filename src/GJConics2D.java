@@ -3,16 +3,6 @@
  */
 
 
-import static java.lang.Math.*;
-
-
-
-
-
-
-
-
-
 /**
  * Generic class providing utilities for manipulating conics. Provides in
  * particular methods for reducing a conic.
@@ -20,192 +10,6 @@ import static java.lang.Math.*;
  * @author dlegland
  */
 public class GJConics2D {
-
-    public final static GJConic2D reduceConic(double[] coefs) {
-		if (coefs.length < 6) {
-            System.err.println(
-            		"Conic2DUtils.reduceConic: must provide 6 coefficients");
-            return null;
-        }
-        boolean debug = false;
-
-        // precision for tests
-        double eps = GJShape2D.ACCURACY;
-
-        // Extract coefficients
-        double a = coefs[0];
-        double b = coefs[1];
-        double c = coefs[2];
-        double d = coefs[3];
-        double e = coefs[4];
-        double f = coefs[5];
-
-        // Transform the generic conic into a conic symmetric with respect to
-        // one of the basis axes.
-        // This results in fixing the coefficient b to 0.
-
-        // coefficients of transformed conic;
-        double a1, b1, c1, d1, e1, f1;
-
-        double theta0 = 0;
-        // Check if b is zero
-		if (abs(b) < eps) {
-            // Simply keep the same coefficients
-            a1 = a;
-            b1 = b;
-            c1 = c;
-            d1 = d;
-            e1 = e;
-            f1 = f;
-            theta0 = 0;
-        } else {
-            // determine rotation angle (between 0 and PI/2).
-			if (abs(a - c) < eps)
-				theta0 = PI / 4; // conic symmetric wrt diagonal
-			else
-				theta0 = GJAngle2D.formatAngle(atan2(b, a - c) / 2);
-
-			if (debug)
-				System.out.println("conic main angle: " + toDegrees(theta0));
-
-			// computation shortcuts
-			double cot = cos(theta0);
-			double sit = sin(theta0);
-			double co2t = cos(2 * theta0);
-			double si2t = sin(2 * theta0);
-			double cot2 = cot * cot;
-			double sit2 = sit * sit;
-
-			// Compute coefficients of the conic rotated around origin
-			a1 = a * cot2 + b * sit * cot + c * sit2;
-			b1 = si2t * (c - a) + b * co2t; // should be equal to zero
-			c1 = a * sit2 - b * sit * cot + c * cot2;
-			d1 = d * cot + e * sit;
-			e1 = -d * sit + e * cot;
-			f1 = f;
-        }
-
-        // small control on the value of b1
-		if (abs(b1) > eps) {
-            System.err.println(
-            		"Conic2DUtils.reduceConic: " + 
-            		"conic was not correctly transformed");
-            return null;
-        }
-
-		// Test degenerate cases
-		if (abs(a) < eps && abs(c) < eps) {
-			if (abs(d) > eps || abs(e) > eps)
-				return new ConicStraightLine2D(d, e, f);
-			else
-				return null; // TODO: throw exception ?
-        }
-
-        // Case of a parabola
-		if (abs(a1) < eps) {
-            // case of a1 close to 0 -> parabola parallel to horizontal axis
-            if (debug)
-                System.out.println("horizontal parabola");
-
-			// Check degenerate case d=0
-			if (abs(d1) < eps) {
-				double delta = e1 * e1 - 4 * c1 * f1;
-				if (delta >= 0) {
-					// find the 2 roots
-					double ys = -e1 / 2.0 / c1;
-					double dist = sqrt(delta) / 2.0 / c1;
-					GJPoint2D center = new GJPoint2D(0, ys)
-							.transform(GJAffineTransform2D.createRotation(theta0));
-					return new ConicTwoLines2D(center, dist, theta0);
-				} else
-					return null; // TODO: throw exception ?
-            }
-
-            // compute reduced coefficients
-			double c2 = -c1 / d1;
-			double e2 = -e1 / d1;
-			double f2 = -f1 / d1;
-
-            // vertex of the parabola
-			double xs = -(e2 * e2 - 4 * c2 * f2) / (4 * c2);
-			double ys = -e2 * .5 / c2;
-            
-            // createFromCollection and return result
-			return new GJParabola2D(xs, ys, c2, theta0 - PI / 2);
-
-		} else if (abs(c1) < eps) {
-			// Case of c1 close to 0 -> parabola parallel to vertical axis
-			if (debug)
-				System.out.println("vertical parabola");
-
-            // Check degenerate case d=0
-			if (abs(e1) < eps) {
-				double delta = d1 * d1 - 4 * a1 * f1;
-				if (delta >= 0) {
-					// find the 2 roots
-					double xs = -d1 / 2.0 / a1;
-					double dist = sqrt(delta) / 2.0 / a1;
-					GJPoint2D center = new GJPoint2D(0, xs)
-							.transform(GJAffineTransform2D.createRotation(theta0));
-					return new ConicTwoLines2D(center, dist, theta0);
-				} else
-					return null; // TODO: throw exception ?
-			}
-
-			// compute reduced coefficients
-			double a2 = -a1 / e1;
-			double d2 = -d1 / e1;
-			double f2 = -f1 / e1;
-
-			// vertex of parabola
-			double xs = -d2 * .5 / a2;
-			double ys = -(d2 * d2 - 4 * a2 * f2) / (4 * a2);
-
-			// createFromCollection and return result
-			return new GJParabola2D(xs, ys, a2, theta0);
-        }
-
-        // Remaining cases: ellipse or hyperbola
-
-        // compute coordinate of conic center
-		GJPoint2D center = new GJPoint2D(-d1 / (2 * a1), -e1 / (2 * c1));
-		center = center.transform(GJAffineTransform2D.createRotation(theta0));
-
-		// length of semi axes
-		double num = (c1 * d1 * d1 + a1 * e1 * e1 - 4 * a1 * c1 * f1)
-				/ (4 * a1 * c1);
-		double at = num / a1;
-		double bt = num / c1;
-
-		if (at < 0 && bt < 0) {
-			System.err.println("Conic2DUtils.reduceConic(): found A<0 and C<0");
-			return null;
-        }
-
-        // Case of an ellipse
-		if (at > 0 && bt > 0) {
-			if (debug)
-				System.out.println("ellipse");
-			if (at > bt)
-				return new GJEllipse2D(center, sqrt(at), sqrt(bt), theta0);
-			else
-				return new GJEllipse2D(center, sqrt(bt), sqrt(at),
-						GJAngle2D.formatAngle(theta0 + PI / 2));
-        }
-
-        // remaining case is the hyperbola
-
-		// Case of east-west hyperbola
-		if (at > 0) {
-			if (debug)
-				System.out.println("east-west hyperbola");
-			return new GJHyperbola2D(center, sqrt(at), sqrt(-bt), theta0);
-		} else {
-			if (debug)
-				System.out.println("north-south hyperbola");
-			return new GJHyperbola2D(center, sqrt(bt), sqrt(-at), theta0 + PI / 2);
-        }
-    }
 
     /**
      * Transforms a conic centered around the origin, by dropping the
@@ -360,7 +164,7 @@ public class GJConics2D {
             GJAffineTransform2D sca = GJAffineTransform2D.createScaling(0, d);
             GJAffineTransform2D rot = GJAffineTransform2D.createRotation(theta);
             GJAffineTransform2D tra = GJAffineTransform2D.createTranslation(xc, yc);
-            
+
             // GJAffineTransform2D trans = tra.compose(rot).compose(sca);
             GJAffineTransform2D trans = sca.chain(rot).chain(tra);
             return GJConics2D.transform(coefs, trans);

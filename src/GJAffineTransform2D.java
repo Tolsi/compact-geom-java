@@ -1,33 +1,3 @@
-/* File AffineTransform2D.java 
- *
- * Project : Java Geometry Library
- *
- * ===========================================
- * 
- * This library is free software; you can redistribute it and/or modify it 
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 2.1 of the License, or (at
- * your option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but 
- * WITHOUT ANY WARRANTY, without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * See the GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library. if not, write to :
- * The Free Software Foundation, Inc., 59 Temple Place, Suite 330,
- * Boston, MA 02111-1307, USA.
- */
-
-// package
-
-
-
-// Imports
-
-
 import static java.lang.Math.*;
 
 
@@ -102,7 +72,7 @@ public class GJAffineTransform2D implements GJBijection2D, GJGeometricObject2D,
 	 * second parameter.
 	 */
 	public static GJAffineTransform2D createGlideReflection(GJLinearShape2D line,
-															double distance) {
+                                                            double distance) {
 		// get origin and vector of line
 		GJVector2D vector = line.direction().normalize();
 		GJPoint2D origin = line.origin();
@@ -211,7 +181,7 @@ public class GJAffineTransform2D implements GJBijection2D, GJGeometricObject2D,
 	 * degrees around the given point.
 	 */
 	public static GJAffineTransform2D createQuadrantRotation(GJPoint2D center,
-															 int numQuadrant) {
+                                                             int numQuadrant) {
 		GJAffineTransform2D trans = createQuadrantRotation(numQuadrant);
 		trans.recenter(center.x(), center.y());
 		return trans;
@@ -279,7 +249,7 @@ public class GJAffineTransform2D implements GJBijection2D, GJGeometricObject2D,
 	 * given by (x0,y0).
 	 */
 	public static GJAffineTransform2D createScaling(GJPoint2D center, double sx,
-													double sy) {
+                                                    double sy) {
 		return new GJAffineTransform2D(
 				sx, 0, (1 - sx) * center.x(), 
 				0, sy, (1 - sy) * center.y());

@@ -1,10 +1,4 @@
 /**
- * 
- */
-
-
-
-/**
  * Exception thrown when an unbounded shape is involved in an operation
  * that assumes a bounded shape. 
  * @author dlegland

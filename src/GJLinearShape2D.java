@@ -1,15 +1,4 @@
 /**
- * 
- */
-
-
-
-
-
-
-
-
-/**
  * A curve that can be inscribed in a straight line, like a ray, a straight
  * line, or a line segment. Classes implementing this interface can be
  * discontinuous, contrary to the interface GJLinearElement2D.

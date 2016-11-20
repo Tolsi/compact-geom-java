@@ -1,22 +1,6 @@
-/**
- * File: 	GJDomainArray2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 17 ao�t 10
- */
-
-
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
-
-
-
-
-
-
 
 
 /**

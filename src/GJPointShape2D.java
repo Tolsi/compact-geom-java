@@ -1,19 +1,4 @@
-/**
- * File: 	GJPointShape2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 6 f�vr. 09
- */
-
-
 import java.util.Collection;
-
-
-
-
-
 
 
 /**

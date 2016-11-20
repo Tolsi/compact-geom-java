@@ -1,15 +1,5 @@
-/**
- * 
- */
-
-
-
 import java.util.ArrayList;
 import java.util.Collection;
-
-
-
-
 
 
 /**
@@ -21,7 +11,7 @@ import java.util.Collection;
 public abstract class GJPolylines2D {
 
 	static ArrayList<GJPoint2D> simplifyPolyline(ArrayList<GJPoint2D> vertices,
-												 double distMax) {
+                                                 double distMax) {
 		// index of last vertex
     	int last = vertices.size() - 1;
 		int[] inds = recurseSimplify(vertices, 0, last, distMax);
@@ -36,7 +26,7 @@ public abstract class GJPolylines2D {
     }
     
 	static ArrayList<GJPoint2D> simplifyClosedPolyline(ArrayList<GJPoint2D> vertices,
-													   double distMax) {
+                                                       double distMax) {
 		
 		
 		// index of last vertex
@@ -72,7 +62,7 @@ public abstract class GJPolylines2D {
 	 * Used for constructing simplified polylines.
 	 */
 	private static int[] recurseSimplify(ArrayList<GJPoint2D> vertices, int first,
-										 int last, double distMax) {
+                                         int last, double distMax) {
 		if (last - first < 2) {
 			return new int[0];
 		}
@@ -134,7 +124,7 @@ public abstract class GJPolylines2D {
 	 * tested if the polyline is closed (second argument is true).
 	 */
     public final static boolean hasMultipleVertices(GJLinearCurve2D polyline,
-													boolean closed) {
+                                                    boolean closed) {
     	// Test vertices within polyline
     	if(GJPointSets2D.hasMultipleVertices(polyline.vertices))
     		return true;
@@ -160,7 +150,7 @@ public abstract class GJPolylines2D {
      * @return the set of intersection points
      */
     public static Collection<GJPoint2D> intersect(
-			GJLinearCurve2D poly1, GJLinearCurve2D poly2) {
+            GJLinearCurve2D poly1, GJLinearCurve2D poly2) {
     	// array for storing intersections
         ArrayList<GJPoint2D> points = new ArrayList<GJPoint2D>();
         

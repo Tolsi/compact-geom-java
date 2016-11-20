@@ -1,20 +1,3 @@
-/**
- * File: 	CircularCapFactory.java
- * Project: javageom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 4 janv. 2011
- */
-
-
-
-
-
-
-
-
-
 import static java.lang.Math.PI;
 
 /**
@@ -31,7 +14,7 @@ public class GJRoundCapFactory implements GJCapFactory {
 	 * @see math.geom2d.circulinear.buffer.GJCapFactory#createCap(math.geom2d.GJPoint2D, math.geom2d.GJVector2D, double)
 	 */
 	public GJCirculinearContinuousCurve2D createCap(GJPoint2D center,
-													GJVector2D direction, double dist) {
+                                                    GJVector2D direction, double dist) {
 		double angle = direction.angle();
 		double angle1 = GJAngle2D.formatAngle(angle - PI/2);
 		double angle2 = GJAngle2D.formatAngle(angle + PI/2);

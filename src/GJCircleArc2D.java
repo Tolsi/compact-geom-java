@@ -1,48 +1,8 @@
-/* file : CircleArc2D.java
- * 
- * Project : geometry
- *
- * ===========================================
- * 
- * This library is free software; you can redistribute it and/or modify it 
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 2.1 of the License, or (at
- * your option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but 
- * WITHOUT ANY WARRANTY, without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * See the GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library. if not, write to :
- * The Free Software Foundation, Inc., 59 Temple Place, Suite 330,
- * Boston, MA 02111-1307, USA.
- * 
- * Created on 29 avr. 2006
- *
- */
-
-
-
-import static java.lang.Math.*;
-
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.Collection;
 import java.util.Locale;
 
-
-
-
-
-
-
-
-
-
-
-
+import static java.lang.Math.*;
 
 
 /**
@@ -59,7 +19,7 @@ import java.util.Locale;
  * @author dlegland
  */
 public class GJCircleArc2D extends GJAbstractSmoothCurve2D
-implements GJEllipseArcShape2D, GJCircularShape2D, GJCirculinearElement2D, Cloneable {
+implements GJCircularShape2D, GJCirculinearElement2D, Cloneable {
 
     // ====================================================================
     // static factories
@@ -641,15 +601,16 @@ implements GJEllipseArcShape2D, GJCircularShape2D, GJCirculinearElement2D, Clone
      * Returns an instance of GJEllipseArc2D, or GJCircleArc2D if transform is a
      * similarity.
      */
-    public GJEllipseArcShape2D transform(GJAffineTransform2D trans) {
+    public GJCircleArc2D transform(GJAffineTransform2D trans) {
     	
     	// When the transform is not a similarity, should switch to EllipseArc
     	// computation
         if (!GJAffineTransform2D.isSimilarity(trans)) {
-        	GJEllipse2D ellipse = this.circle.asEllipse();
-			GJEllipseArc2D arc = new GJEllipseArc2D(ellipse, this.startAngle,
-					this.angleExtent);
-            return arc.transform(trans);
+            throw new IllegalStateException();
+//        	GJEllipse2D ellipse = this.circle.asEllipse();
+//			GJEllipseArc2D arc = new GJEllipseArc2D(ellipse, this.startAngle,
+//					this.angleExtent);
+//            return arc.transform(trans);
         }
 
         // System.out.println("transform a circle arc");

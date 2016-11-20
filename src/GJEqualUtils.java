@@ -1,9 +1,4 @@
 /**
- * 
- */
-
-
-/**
  * Collected methods which allow easy implementation of <code>equals</code>.
  * Rewritten from http://www.javapractices.com/topic/TopicAction.do?Id=17.
  *

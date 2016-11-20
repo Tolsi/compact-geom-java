@@ -1,18 +1,4 @@
 /**
- * File: 	GJCirculinearShape2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 10 mai 09
- */
-
-
-
-
-
-
-/**
  * CirculinearShape comprises shapes which can be described from lines (or
  * linear shapes) and circles (or circle arcs). They allow several operations:
  * the computation of buffer (set of points located less than a given

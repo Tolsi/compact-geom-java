@@ -1,24 +1,6 @@
-/**
- * File: 	GJBufferCalculator.java
- * Project: javageom-buffer
- * 
- * Distributed under the LGPL License.
- *
- * Created: 4 janv. 2011
- */
-
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
-
-
-
-
-
-
-
 
 
 /**
@@ -83,7 +65,7 @@ public class GJBufferCalculator {
 	 * The result is itself a circulinear curve.
 	 */
 	public GJCirculinearCurve2D createParallel(
-			GJCirculinearCurve2D curve, double dist) {
+            GJCirculinearCurve2D curve, double dist) {
 		
 		// case of a continuous curve -> call specialized method
 		if (curve instanceof GJCirculinearContinuousCurve2D) {
@@ -109,7 +91,7 @@ public class GJBufferCalculator {
 	}
 
 	public GJCirculinearBoundary2D createParallelBoundary(
-			GJCirculinearBoundary2D boundary, double dist) {
+            GJCirculinearBoundary2D boundary, double dist) {
 		
 		// in the case of a single contour, return the parallel of the contour
 		if (boundary instanceof GJCirculinearContour2D)
@@ -132,7 +114,7 @@ public class GJBufferCalculator {
 	}
 
 	public GJCirculinearContour2D createParallelContour(
-			GJCirculinearContour2D contour, double dist) {
+            GJCirculinearContour2D contour, double dist) {
 		
 		// straight line is already a circulinear contour
 		if (contour instanceof GJStraightLine2D) {
@@ -157,7 +139,7 @@ public class GJBufferCalculator {
 	 * The result is itself an instance of GJCirculinearContinuousCurve2D.
 	 */
 	public GJCirculinearContinuousCurve2D createContinuousParallel(
-			GJCirculinearContinuousCurve2D curve, double dist) {
+            GJCirculinearContinuousCurve2D curve, double dist) {
 		
 		// For circulinear elements, getParallel() is already implemented
 		if (curve instanceof GJCirculinearElement2D) {
@@ -174,7 +156,7 @@ public class GJBufferCalculator {
 	}
 	
 	private Collection<GJCirculinearContinuousCurve2D> getParallelElements(
-			GJCirculinearContinuousCurve2D curve, double dist) {
+            GJCirculinearContinuousCurve2D curve, double dist) {
 		
 		// extract collection of circulinear elements
 		Collection<? extends GJCirculinearElement2D> elements =
@@ -242,7 +224,7 @@ public class GJBufferCalculator {
 	 * </ol>
 	 */
 	public GJCirculinearDomain2D computeBuffer(
-			GJCirculinearCurve2D curve, double dist) {
+            GJCirculinearCurve2D curve, double dist) {
 		
 		ArrayList<GJCirculinearContour2D> contours =
 			new ArrayList<GJCirculinearContour2D>();
@@ -301,7 +283,7 @@ public class GJBufferCalculator {
 	 * Compute buffer of a point set.
 	 */
 	public GJCirculinearDomain2D computeBuffer(GJPointSet2D set,
-											   double dist) {
+                                               double dist) {
 		// createFromCollection array for storing result
 		Collection<GJCirculinearContour2D> contours =
 			new ArrayList<GJCirculinearContour2D>(set.size());
@@ -459,8 +441,8 @@ public class GJBufferCalculator {
 	}
 	
 	private Collection<GJCirculinearContour2D> removeIntersectingContours (
-			Collection<GJCirculinearContour2D> contours,
-			GJCirculinearCurve2D curve, double d) {
+            Collection<GJCirculinearContour2D> contours,
+            GJCirculinearCurve2D curve, double d) {
 		// prepare an array to store the set of rings
 		ArrayList<GJCirculinearContour2D> contours2 =
 			new ArrayList<GJCirculinearContour2D>();
@@ -509,7 +491,7 @@ public class GJBufferCalculator {
 	}
 	
 	private double getDistanceCurveSingularPoints(
-			GJCirculinearCurve2D ref, GJCirculinearCurve2D curve){
+            GJCirculinearCurve2D ref, GJCirculinearCurve2D curve){
 		// extract singular points
 		Collection<GJPoint2D> points = curve.singularPoints();
 		

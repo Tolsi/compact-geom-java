@@ -1,29 +1,7 @@
-/**
- * File: 	CirculinearCurve2DUtils.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 16 mai 09
- */
-
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
 import java.util.TreeSet;
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Some utilities for working with circulinear curves.
@@ -100,7 +78,7 @@ public class GJCirculinearCurves2D {
 	 * @see math.geom2d.circulinear.GJCirculinearCurve2D#length(double)
 	 */
 	public static double getLength(
-			GJCurveSet2D<? extends GJCirculinearCurve2D> curve, double pos) {
+            GJCurveSet2D<? extends GJCirculinearCurve2D> curve, double pos) {
 		// init
 		double length = 0;
 
@@ -125,7 +103,7 @@ public class GJCirculinearCurves2D {
 	 * @see math.geom2d.circulinear.GJCirculinearCurve2D#position(double)
 	 */
 	public static double getPosition(
-			GJCurveSet2D<? extends GJCirculinearCurve2D> curveSet, double length) {
+            GJCurveSet2D<? extends GJCirculinearCurve2D> curveSet, double length) {
 
 		// position to compute
 		double pos = 0;
@@ -245,7 +223,7 @@ public class GJCirculinearCurves2D {
 	 * Checks if the point is a common extremity between the two curve elements.
 	 */
 	private static boolean isCommonVertex(GJPoint2D inter,
-										  GJCirculinearCurve2D elem1, GJCirculinearCurve2D elem2) {
+                                          GJCirculinearCurve2D elem1, GJCirculinearCurve2D elem2) {
 
 		double eps = GJShape2D.ACCURACY;
 
@@ -272,7 +250,7 @@ public class GJCirculinearCurves2D {
 	 * @return a collection of intersection points
 	 */
 	public static Collection<GJPoint2D> findIntersections(
-			GJCirculinearCurve2D curve1, GJCirculinearCurve2D curve2) {
+            GJCirculinearCurve2D curve1, GJCirculinearCurve2D curve2) {
 
 		// createFromCollection array of circulinear elements
 		ArrayList<GJCirculinearElement2D> elements1 = new ArrayList<GJCirculinearElement2D>();
@@ -313,7 +291,7 @@ public class GJCirculinearCurves2D {
 	 * position on the second curve.
 	 */
 	public static double[][] locateIntersections(GJCirculinearCurve2D curve1,
-												 GJCirculinearCurve2D curve2) {
+                                                 GJCirculinearCurve2D curve2) {
 
 		// createFromCollection array for storing result
 		ArrayList<Double> list1 = new ArrayList<Double>(0);
@@ -365,7 +343,7 @@ public class GJCirculinearCurves2D {
 	 * Computes the intersections, if they exist, of two circulinear elements.
 	 */
 	public static Collection<GJPoint2D> findIntersections(
-			GJCirculinearElement2D elem1, GJCirculinearElement2D elem2) {
+            GJCirculinearElement2D elem1, GJCirculinearElement2D elem2) {
 
 		// find which shapes are linear
 		boolean b1 = elem1 instanceof GJLinearShape2D;
@@ -541,13 +519,13 @@ public class GJCirculinearCurves2D {
 	 * other methods of the class.
 	 */
 	private static GJPolyCirculinearCurve2D<GJCirculinearElement2D> createPolyCurve(
-			Collection<? extends GJCirculinearElement2D> elements, boolean closed) {
+            Collection<? extends GJCirculinearElement2D> elements, boolean closed) {
 		return new GJPolyCirculinearCurve2D<GJCirculinearElement2D>(elements,
 				closed);
 	}
 
 	public static Collection<GJCirculinearContour2D> splitIntersectingContours(
-			GJCirculinearContour2D curve1, GJCirculinearContour2D curve2) {
+            GJCirculinearContour2D curve1, GJCirculinearContour2D curve2) {
 
 		double pos0, pos1, pos2;
 
@@ -842,7 +820,7 @@ public class GJCirculinearCurves2D {
 	}
 
 	public static double getDistanceCurvePoints(GJCirculinearCurve2D curve,
-												Collection<? extends GJPoint2D> points) {
+                                                Collection<? extends GJPoint2D> points) {
 		double minDist = Double.MAX_VALUE;
 		for (GJPoint2D point : points) {
 			minDist = Math.min(minDist, curve.distance(point));

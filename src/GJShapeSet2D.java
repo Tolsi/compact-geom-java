@@ -1,15 +1,4 @@
 /**
- * File: 	GJShapeSet2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 17 ao�t 10
- */
-
-
-
-/**
  * A shape that is composed of several other shapes.
  * @author dlegland
  *

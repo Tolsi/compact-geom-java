@@ -1,20 +1,4 @@
 /**
- * File: 	GJCirculinearElement2D.java
- * Project: javaGeom
- * 
- * Distributed under the LGPL License.
- *
- * Created: 11 mai 09
- */
-
-
-
-
-
-
-
-
-/**
  * <p>
  * Circulinear elements are lowest level of circulinear curve: each
  * circulinear curve can be divided into a set of circulinear elements.</p>
@@ -26,7 +10,7 @@
  *
  */
 public interface GJCirculinearElement2D extends GJCirculinearContinuousCurve2D,
-		GJSmoothOrientedCurve2D {
+        GJSmoothOrientedCurve2D {
 
 	public GJCirculinearElement2D parallel(double d);
 	public GJCirculinearElement2D transform(GJCircleInversion2D inv);

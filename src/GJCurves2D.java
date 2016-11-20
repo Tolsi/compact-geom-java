@@ -1,25 +1,9 @@
-/**
- * 
- */
+import java.util.*;
 
-
-
-import static java.lang.Double.POSITIVE_INFINITY;
 import static java.lang.Double.NEGATIVE_INFINITY;
-import static java.lang.Math.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-
-
-
-
-
-
+import static java.lang.Double.POSITIVE_INFINITY;
+import static java.lang.Math.PI;
+import static java.lang.Math.abs;
 
 
 /**
@@ -102,7 +86,7 @@ public abstract class GJCurves2D {
 	 * the original curve.
 	 */
 	public static GJCurveSet2D<? extends GJCurve2D> clipCurve(GJCurve2D curve,
-															  GJBox2D box) {
+                                                              GJBox2D box) {
 		// Case of continuous curve:
 		// convert the result of ClipContinuousCurve to CurveSet of GJCurve2D
 		if (curve instanceof GJContinuousCurve2D)
@@ -121,7 +105,7 @@ public abstract class GJCurves2D {
 	 * clip a GJCurveSet2D.
 	 */
 	public static GJCurveSet2D<? extends GJCurve2D> clipCurveSet(
-			GJCurveSet2D<?> curveSet, GJBox2D box) {
+            GJCurveSet2D<?> curveSet, GJBox2D box) {
 		// Clip the current curve
 		GJCurveArray2D<GJCurve2D> result = new GJCurveArray2D<GJCurve2D>();
 		GJCurveSet2D<?> clipped;
@@ -160,7 +144,7 @@ public abstract class GJCurves2D {
 	 * </p>
 	 */
 	public static GJCurveSet2D<GJContinuousCurve2D> clipContinuousCurve(
-			GJContinuousCurve2D curve, GJBox2D box) {
+            GJContinuousCurve2D curve, GJBox2D box) {
 
 		// Create GJCurveSet2D for storing the result
 		GJCurveArray2D<GJContinuousCurve2D> res = new GJCurveArray2D<GJContinuousCurve2D>();
@@ -315,7 +299,7 @@ public abstract class GJCurves2D {
 	 * clipContinuousCurve, and cast clipped curves.
 	 */
 	public static GJCurveSet2D<GJSmoothCurve2D> clipSmoothCurve(
-			GJSmoothCurve2D curve, GJBox2D box) {
+            GJSmoothCurve2D curve, GJBox2D box) {
 		GJCurveArray2D<GJSmoothCurve2D> result = new GJCurveArray2D<GJSmoothCurve2D>();
 		for (GJContinuousCurve2D cont : GJCurves2D.clipContinuousCurve(curve,
 				box))
@@ -330,7 +314,7 @@ public abstract class GJCurves2D {
 	 * method is mainly used to help debugging when implementing curves.
 	 */
 	public static GJCurveSet2D<GJSmoothCurve2D> clipSmoothCurve(
-			GJSmoothCurve2D curve, GJStraightLine2D line) {
+            GJSmoothCurve2D curve, GJStraightLine2D line) {
 
 		// get the list of intersections with the line
 		ArrayList<GJPoint2D> list = new ArrayList<GJPoint2D>();
@@ -339,7 +323,7 @@ public abstract class GJCurves2D {
 		// convert list to point array, sorted with respect to their position
 		// on the curve, but do not add tangent points with curvature greater
 		// than 0
-		SortedSet<java.lang.Double> set = new TreeSet<java.lang.Double>();
+		SortedSet<Double> set = new TreeSet<Double>();
 		double position;
 		GJVector2D vector = line.direction();
 		for (GJPoint2D point : list) {
@@ -355,7 +339,7 @@ public abstract class GJCurves2D {
 				if (Math.abs(curv) > GJShape2D.ACCURACY)
 					continue;
 			}
-			set.add(new java.lang.Double(position));
+			set.add(new Double(position));
 		}
 
 		// Create GJCurveSet2D for storing the result
@@ -370,7 +354,7 @@ public abstract class GJCurves2D {
 
 		// Extract first valid intersection point, if it exists
 		double pos1, pos2;
-		Iterator<java.lang.Double> iter = set.iterator();
+		Iterator<Double> iter = set.iterator();
 
 		// if no intersection point, the curve is either totally inside
 		// or totally outside the box
@@ -413,10 +397,10 @@ public abstract class GJCurves2D {
 
 	public static int findNextCurveIndex(double[] positions, double pos) {
 		int ind = -1;
-		double posMin = java.lang.Double.MAX_VALUE;
+		double posMin = Double.MAX_VALUE;
 		for (int i = 0; i < positions.length; i++) {
 			// avoid NaN
-			if (java.lang.Double.isNaN(positions[i]))
+			if (Double.isNaN(positions[i]))
 				continue;
 			// avoid values before
 			if (positions[i] - pos < GJShape2D.ACCURACY)
@@ -435,7 +419,7 @@ public abstract class GJCurves2D {
 		// if not found, return index of smallest value (mean that pos is last
 		// point on the boundary, so we need to start at the beginning).
 		for (int i = 0; i < positions.length; i++) {
-			if (java.lang.Double.isNaN(positions[i]))
+			if (Double.isNaN(positions[i]))
 				continue;
 			if (positions[i] - posMin < GJShape2D.ACCURACY) {
 				ind = i;
